@@ -1,0 +1,19 @@
+.registrationContainer {
+  display: flex;
+  flex-direction: column;
+}
+.authLink {
+  margin: 0;
+  text-decoration: none;
+  color: #a37a8a;
+  font-weight: 700;
+
+  text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.1),
+    1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+@media screen and (min-width: 768px) {
+  .authLink {
+    font-size: 24px;
+    text-shadow: none;
+  }
+}

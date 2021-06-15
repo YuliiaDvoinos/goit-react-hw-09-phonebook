@@ -1,0 +1,22 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
+body {
+  color: black;
+  background-color: #dae4ed;
+}
+body.modal-open {
+  overflow: hidden;
+}
+.list {
+  list-style: none;
+}
+.link-underline {
+  text-decoration: none;
+}
+img {
+  display: block;
+}

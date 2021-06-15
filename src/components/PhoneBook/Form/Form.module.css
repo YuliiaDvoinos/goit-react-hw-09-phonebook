@@ -1,0 +1,55 @@
+.container {
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid cadetblue;
+}
+.label {
+  margin-top: 20px;
+  width: 250px;
+  display: block;
+  text-align: center;
+}
+.input {
+  width: 240px;
+  font-size: 10px;
+  padding: 5px;
+  margin-top: 10px;
+  display: block;
+  outline: none;
+  border: 1px solid rgb(138, 113, 134);
+}
+.input:hover,
+.input:focus {
+  outline: none;
+  border: 1px solid cadetblue;
+}
+.addBtn {
+  width: 150px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  height: 50px;
+  border: 1px solid cadetblue;
+  background: cadetblue;
+  color: white;
+}
+.addBtn:hover {
+  background-color: rgb(138, 113, 134);
+
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+@media screen and (min-width: 768px) {
+  .container {
+    width: 350px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .container {
+    width: 450px;
+  }
+}

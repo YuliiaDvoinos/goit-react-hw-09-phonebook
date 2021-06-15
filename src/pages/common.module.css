@@ -1,0 +1,181 @@
+/* greeting component */
+.greetingContainer {
+  background-color: #dae4ed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 700px;
+
+  padding: 30px;
+}
+.greetingTitle,
+.registrationTitle,
+.loginTitle {
+  margin: 0;
+  color: #3e7671;
+  /* text-decoration: underline; */
+}
+.greetingDescr {
+  margin: 0;
+  color: #637174;
+}
+.greetingSpan {
+  font-weight: bold;
+  text-decoration: underline;
+}
+/* user menu */
+.userContainer {
+  display: flex;
+  flex-direction: column;
+}
+.avatar {
+  margin-right: 4px;
+}
+.name {
+}
+.userInfo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #a37a8a;
+}
+.userNameSpan {
+  font-weight: bold;
+
+  display: block;
+}
+.userBtn {
+  align-self: center;
+  margin-top: 5px;
+  width: 60px;
+  background: #a37a8a;
+  outline: none;
+  border: none;
+  border-radius: 2px;
+  color: white;
+  border: 1px solid transparent;
+}
+.userBtn:hover {
+  border: 1px solid #a37a8a;
+  background-color: transparent;
+  color: #a37a8a;
+}
+/* contacts book */
+.contactsBookContainer {
+  padding: 30px 10px;
+}
+
+/* registration  and login*/
+.registrationContainer,
+.loginContainer {
+  background-color: #c2d4dd;
+  min-height: 320px;
+  padding: 10px;
+}
+.registrationTitle,
+.loginTitle {
+  text-align: center;
+}
+.registrationForm,
+.loginForm {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid cadetblue;
+}
+.registrationLabel,
+.loginLabel {
+  margin-top: 20px;
+  width: 250px;
+  display: block;
+  text-align: center;
+}
+.registrationInput,
+.loginInput {
+  outline: none;
+  border: 1px solid rgb(138, 113, 134);
+  width: 240px;
+  font-size: 10px;
+  padding: 5px;
+  margin-top: 10px;
+  display: block;
+}
+.registrationInput:hover,
+.registrationInput:focus,
+.loginInput:hover,
+.loginInput:focus {
+  outline: none;
+  border: 1px solid cadetblue;
+}
+.registrationBtn,
+.loginBtn {
+  width: 150px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  text-align: center;
+  height: 50px;
+  border: 1px solid cadetblue;
+  background: cadetblue;
+  color: white;
+}
+.registrationBtn:hover,
+.registrationBtn:focus,
+.loginBtn:hover,
+.loginBtn:focus {
+  background-color: rgb(138, 113, 134);
+  color: white;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+@media screen and (min-width: 768px) {
+  .greetingContainer {
+    min-height: 700px;
+  }
+
+  .greetingTitle {
+    font-size: 70px;
+  }
+  .greetingDescr {
+    font-size: 25px;
+  }
+  .avatar {
+    width: 50px;
+  }
+  .userInfo {
+    font-size: 24px;
+  }
+  .userBtn {
+    width: 100px;
+    font-size: 20px;
+    padding: 5px;
+  }
+  .name {
+    display: flex;
+  }
+  .userNameSpan {
+    margin-left: 5px;
+  }
+  .contactsBookContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  /* registration  and login*/
+  .registrationForm,
+  .loginForm {
+    width: 450px;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  .registrationContainer,
+  .loginContainer {
+    min-height: 700px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .contactsBookContainer {
+    justify-content: space-around;
+  }
+}
