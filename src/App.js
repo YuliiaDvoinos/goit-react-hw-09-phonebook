@@ -1,5 +1,5 @@
 //react imports
-import { Route, Switch } from "react-router";
+import { Switch } from "react-router";
 import { lazy, Suspense, useEffect } from "react";
 //redux imports
 import authOperations from "./redux/auth/auth-operations";
@@ -30,12 +30,13 @@ const ContactsPage = lazy(() =>
 //     this.props.getCurrentUser();
 //   }
 //   render() {
-export default function App({ getCurrentUser }) {
+export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(authOperations.getCurrentUser());
   }, [dispatch]);
+
   return (
     <div className="App">
       <NavBar />
