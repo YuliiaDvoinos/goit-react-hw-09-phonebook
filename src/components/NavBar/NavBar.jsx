@@ -1,4 +1,4 @@
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import routes from "../../routes";
 import AuthBar from "../AuthBar";
@@ -6,7 +6,8 @@ import UserMenu from "../UserMenu";
 import authSelectors from "../../redux/auth/auth-selectors";
 import styles from "./nav-bar.module.css";
 
-const NavBar = ({ isAuthenticated }) => {
+export default function NavBar() {
+  const isLoggedIn = useSelector(authSelectors.getIsAuthenticated);
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
@@ -14,20 +15,20 @@ const NavBar = ({ isAuthenticated }) => {
           <NavLink to="/" className={styles.home}>
             Home
           </NavLink>
-          {isAuthenticated && (
+          {isLoggedIn && (
             <NavLink to={routes.ContactsPage} className={styles.contacts}>
               Contacts
             </NavLink>
           )}
         </div>
 
-        {isAuthenticated ? <UserMenu /> : <AuthBar />}
+        {isLoggedIn ? <UserMenu /> : <AuthBar />}
       </div>
     </header>
   );
-};
-const mapStateToProps = (state) => ({
-  isAuthenticated: authSelectors.getIsAuthenticated(state),
-});
+}
+// const mapStateToProps = (state) => ({
+//   isAuthenticated: authSelectors.getIsAuthenticated(state),
+// });
 
-export default connect(mapStateToProps)(NavBar);
+// export default connect(mapStateToProps)(NavBar);

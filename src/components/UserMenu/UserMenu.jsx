@@ -1,31 +1,28 @@
 import styles from "../../pages/common.module.css";
 
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import authOperations from "../../redux/auth/auth-operations";
 import authSelectors from "../../redux/auth/auth-selectors";
 
 import defaultAvatar from "./default.png";
+import { useCallback } from "react";
 
-// const styles = {
-//   container: {
-//     display: "flex",
-//     alignItems: "center",
-//   },
-//   avatar: {
-//     marginRight: 4,
-//   },
-//   name: {
-//     fontWeight: 700,
-//     marginRight: 12,
-//   },
-// };
-
-const UserMenu = ({ avatar, name, onLogout }) => {
+export default function UserMenu() {
+  const name = useSelector(authSelectors.getUsername);
+  const dispatch = useDispatch();
+  const onLogout = useCallback(() => {
+    dispatch(authOperations.logOut());
+  }, [dispatch]);
   return (
     <div className={styles.userContainer}>
       <div className={styles.userInfo}>
-        <img src={avatar} alt="avatar" width="32" className={styles.avatar} />
+        <img
+          src={defaultAvatar}
+          alt="avatar"
+          width="32"
+          className={styles.avatar}
+        />
         <span className={styles.name}>
           Welcome, <span className={styles.userNameSpan}> {name} </span>
         </span>
@@ -35,14 +32,14 @@ const UserMenu = ({ avatar, name, onLogout }) => {
       </button>
     </div>
   );
-};
-const mapStateToProps = (state) => ({
-  name: authSelectors.getUsername(state),
-  avatar: defaultAvatar,
-});
+}
+// const mapStateToProps = (state) => ({
+//   name: authSelectors.getUsername(state),
+//   avatar: defaultAvatar,
+// });
 
-const mapDispatchToProps = {
-  onLogout: authOperations.logOut,
-};
+// const mapDispatchToProps = {
+//   onLogout: authOperations.logOut,
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserMenu);
+// export default connect(mapStateToProps, mapDispatchToProps)(UserMenu);

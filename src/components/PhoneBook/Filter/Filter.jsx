@@ -1,8 +1,17 @@
 import styles from "./Filter.module.css";
-import { connect } from "react-redux";
+
 //redux imports
+import { useDispatch, useSelector } from "react-redux";
 import { changeFilter, getFilter } from "../../../redux/ContactsBook";
-const Filter = ({ value, onFilterChange }) => {
+import { useCallback } from "react";
+
+export default function Filter() {
+  const value = useSelector(getFilter);
+  const dispatch = useDispatch();
+  const onFilterChange = useCallback(
+    (event) => dispatch(changeFilter(event.currentTarget.value)),
+    [dispatch]
+  );
   return (
     <div className={styles.container}>
       <label className={styles.label}>
@@ -16,15 +25,15 @@ const Filter = ({ value, onFilterChange }) => {
       </label>
     </div>
   );
-};
+}
 
-const mapStateToProps = (state) => ({
-  value: getFilter(state),
-});
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onFilterChange: (event, contacts) =>
-      dispatch(changeFilter(event.currentTarget.value)),
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Filter);
+// const mapStateToProps = (state) => ({
+//   value: getFilter(state),
+// });
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     onFilterChange: (event) =>
+//       dispatch(changeFilter(event.currentTarget.value)),
+//   };
+// };
+// export default connect(mapStateToProps, mapDispatchToProps)(Filter);

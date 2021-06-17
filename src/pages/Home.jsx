@@ -1,5 +1,5 @@
 import styles from "./common.module.css";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import GreetingMessage from "../components/GreetingMessage/GreetingMessage";
 import authSelectors from "../redux/auth/auth-selectors";
 import background from "../images/background.jpeg";
@@ -17,10 +17,11 @@ const AuthenticatedHomePage = (
   </div>
 );
 
-const Home = ({ isAuthenticated }) => {
-  return <>{isAuthenticated ? AuthenticatedHomePage : <GreetingMessage />}</>;
-};
-const mapStateToProps = (state) => ({
-  isAuthenticated: authSelectors.getIsAuthenticated(state),
-});
-export default connect(mapStateToProps)(Home);
+export default function Home() {
+  const isLoggedIn = useSelector(authSelectors.getIsAuthenticated);
+  return <>{isLoggedIn ? AuthenticatedHomePage : <GreetingMessage />}</>;
+}
+// const mapStateToProps = (state) => ({
+//   isAuthenticated: authSelectors.getIsAuthenticated(state),
+// });
+// export default connect(mapStateToProps)(Home);

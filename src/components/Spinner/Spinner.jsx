@@ -7,13 +7,11 @@ const useStyles = createUseStyles({
     marginTop: 20,
   },
 });
-const Spinner = () => {
+export default function Spinner() {
   const styles = useStyles();
   return (
     <div className={styles.loader__container}>
       <Loader type="Rings" color="aliceblue" height={100} width={100} />
     </div>
   );
-};
-
-export default Spinner;
+}

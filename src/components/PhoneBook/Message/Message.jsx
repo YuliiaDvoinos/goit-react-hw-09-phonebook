@@ -35,7 +35,7 @@ const useStyles = createUseStyles({
     },
   },
 });
-const Message = () => {
+export default function Message() {
   const classes = useStyles();
   return (
     <div className={classes.messageContainer}>
@@ -43,6 +43,4 @@ const Message = () => {
       <p className={classes.message}>You haven't any contacts </p>
     </div>
   );
-};
-
-export default Message;
+}

@@ -1,9 +1,9 @@
 //react imports
 import { Route, Switch } from "react-router";
-import { Component, lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 //redux imports
 import authOperations from "./redux/auth/auth-operations";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 //components imports
 import Spinner from "./components/Spinner";
 import NavBar from "./components/NavBar";
@@ -25,43 +25,57 @@ const Login = lazy(() =>
 const ContactsPage = lazy(() =>
   import("./pages/Contacts" /*webpackChunkName: "contacts-page"*/)
 );
-class App extends Component {
-  componentDidMount() {
-    this.props.getCurrentUser();
-  }
-  render() {
-    return (
-      <div className="App">
-        <NavBar />
-        <Container>
-          <Suspense fallback={<Spinner />}>
-            <Switch>
-              <Route exact path={routes.HomePage} component={Home} />
-              <PublicRoute
-                restricted
-                path={routes.RegisterPage}
-                redirectTo={routes.ContactsPage}
-                component={Register}
-              />
-              <PublicRoute
-                restricted
-                path={routes.LoginPage}
-                redirectTo={routes.ContactsPage}
-                component={Login}
-              />
-              <PrivateRoute
-                path={routes.ContactsPage}
-                redirectTo={routes.LoginPage}
-                component={ContactsPage}
-              />
-            </Switch>
-          </Suspense>
-        </Container>
-      </div>
-    );
-  }
+// class App extends Component {
+//   componentDidMount() {
+//     this.props.getCurrentUser();
+//   }
+//   render() {
+export default function App({ getCurrentUser }) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authOperations.getCurrentUser());
+  }, [dispatch]);
+  return (
+    <div className="App">
+      <NavBar />
+      <Container>
+        <Suspense fallback={<Spinner />}>
+          <Switch>
+            <PublicRoute exact path={routes.HomePage}>
+              <Home />
+            </PublicRoute>
+
+            <PublicRoute
+              restricted
+              path={routes.RegisterPage}
+              redirectTo={routes.ContactsPage}
+            >
+              <Register />
+            </PublicRoute>
+
+            <PublicRoute
+              restricted
+              path={routes.LoginPage}
+              redirectTo={routes.ContactsPage}
+            >
+              <Login />
+            </PublicRoute>
+
+            <PrivateRoute
+              path={routes.ContactsPage}
+              redirectTo={routes.LoginPage}
+            >
+              <ContactsPage />
+            </PrivateRoute>
+          </Switch>
+        </Suspense>
+      </Container>
+    </div>
+  );
 }
-const mapDispatchToProps = {
-  getCurrentUser: authOperations.getCurrentUser,
-};
-export default connect(null, mapDispatchToProps)(App);
+
+// const mapDispatchToProps = {
+//   getCurrentUser: authOperations.getCurrentUser,
+// };
+// export default connect(null, mapDispatchToProps)(App);

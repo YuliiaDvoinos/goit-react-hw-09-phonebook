@@ -1,6 +1,6 @@
 import styles from "../../pages/common.module.css";
 import background from "../../images/background.jpeg";
-const GreetingMessage = () => {
+export default function GreetingMessage() {
   return (
     <div
       style={{ backgroundImage: `url(${background})` }}
@@ -12,5 +12,4 @@ const GreetingMessage = () => {
       </p>
     </div>
   );
-};
-export default GreetingMessage;
+}

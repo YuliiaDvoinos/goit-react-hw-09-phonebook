@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styles from "./auth-bar.module.css";
 
-const AuthBar = () => {
+export default function AuthBar() {
   return (
     <div className={styles.registrationContainer}>
       <NavLink to="./register" className={styles.authLink}>
@@ -12,5 +12,4 @@ const AuthBar = () => {
       </NavLink>
     </div>
   );
-};
-export default AuthBar;
+}
